@@ -34,7 +34,7 @@
 		</div>
 		<div id="setpass" style="text-align:left;display:none;">
 		<p>Please type new password:<p>
-		<input type="text" id="newpass"  /> <button id="btn4" onclick="changepass()" />Encrypt</button>
+		<input type="text" id="newpass" id="newpass" onclick="document.getElementById('newpass').select();" /> <button id="btn4" onclick="changepass()" />Encrypt</button>
 		<p style="width:320px;max-width:96%;"><span style="font-weight:bold;">Notice:</span> This tool only encrypt new password, you need copy password was encrypted and open this page by notepad (or other text editor). Find line similar to <span style="font-style:italic;text-decoration: underline;">var passtring = "password_string";</span> and replace old password string bettween two quotes by new password was encrypted.</p>
 		<p style="font-size:small;"><span style="text-decoration: underline;" id="in_back" onclick="backtologin()">Go back to login &raquo;</span></p>
 		</div><br><br>
