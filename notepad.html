@@ -24,12 +24,19 @@
 		<div id="loginform" style="text-align:left;">
 		<p>Please type password to use:<p>
 		<input type="password" id="mypass"  /> <button id="btn1" onclick="showcontent()" />OK</button><p id="login_status"></p>
+		<p style="font-size:small;"><span style="text-decoration: underline;" id="set_pass" onclick="opensetpass()">Do you want to change password?</span></p>
 		</div>
 		<div id="readform" style="text-align:left;display:none;">
 		<p>Please select file to read:<p>
-		 <input id="myfile" type="file" /> <button id="btn3" onclick="readcontent()" />Read text</button>
+		<input id="myfile" type="file" /> <button id="btn3" onclick="readcontent()" />Read text</button>
 		<p style="width:320px;max-width:96%;"><span style="font-weight:bold;">Notice:</span> This tool only read text data from file, clean all current text in textarea and replace by text in file.</p>
 		<p style="font-size:small;"><span style="text-decoration: underline;" id="in_back" onclick="backtomain()">Go back to textarea &raquo;</span></p>
+		</div>
+		<div id="setpass" style="text-align:left;display:none;">
+		<p>Please type new password:<p>
+		<input type="text" id="newpass"  /> <button id="btn4" onclick="changepass()" />Encrypt</button>
+		<p style="width:320px;max-width:96%;"><span style="font-weight:bold;">Notice:</span> This tool only encrypt new password, you need copy password was encrypted and open this page by notepad (or other text editor). Find line similar to <span style="font-style:italic;text-decoration: underline;">var passtring = "password_string";</span> and replace old password string bettween two quotes by new password was encrypted.</p>
+		<p style="font-size:small;"><span style="text-decoration: underline;" id="in_back" onclick="backtologin()">Go back to login &raquo;</span></p>
 		</div><br><br><br><br>
 		
 			
@@ -44,6 +51,8 @@
   var button2 = document.getElementById("btn2");
   var upmyfile = document.getElementById("myfile");
   var button3 = document.getElementById("btn3");
+  var oppass = document.getElementById("setpass");
+  var nwpass = document.getElementById("newpass");
   var passtring = "cGFzc3dvcmQ=";
   
   inputpass.addEventListener("keypress", function(event) {
@@ -92,6 +101,17 @@ function hidecontent() {
   inputpass.value = "";
   mylogin.style.display = "block";
   document.getElementById("login_status").innerHTML = "";
+}
+function opensetpass() {
+  mylogin.style.display = "none";
+  oppass.style.display = "block";
+}
+function changepass() {
+  nwpass.value = window.btoa(nwpass.value);
+}
+function backtologin()  {
+  mylogin.style.display = "block";
+  oppass.style.display = "none";
 }
 function saveTXT() {
   var mytext = document.getElementById("mytextarea").value;
